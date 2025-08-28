@@ -1,34 +1,331 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Content Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple CMS - Futures Bright</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .output {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .output h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .output pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .instructions h3 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        .filename {
+            background: #FFD700;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <div id="pages-cms"></div>
-    <script src="https://unpkg.com/pages-cms@latest"></script>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Simple Article Creator</h1>
+            <p>Create articles for your Futures Bright site</p>
+        </div>
+        
+        <div class="content">
+            <div class="instructions">
+                <h3>📋 How to Use:</h3>
+                <ol>
+                    <li>Fill out the form below</li>
+                    <li>Click "Generate Article File"</li>
+                    <li>Copy the generated content</li>
+                    <li>Go to your GitHub repository</li>
+                    <li>Create a new file in the <span class="filename">_posts</span> folder</li>
+                    <li>Paste the content and commit</li>
+                </ol>
+            </div>
+
+            <form id="articleForm">
+                <div class="form-group">
+                    <label for="title">Article Title *</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter your article title">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Society">Society</option>
+                        <option value="Economics">Economics</option>
+                        <option value="Environment">Environment</option>
+                        <option value="Culture">Culture</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" value="Editor" placeholder="Author name">
+                </div>
+
+                <div class="form-group">
+                    <label for="excerpt">Excerpt *</label>
+                    <input type="text" id="excerpt" name="excerpt" required placeholder="Brief description for article preview">
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Article Content *</label>
+                    <textarea id="content" name="content" required placeholder="Write your article content here in Markdown format...
+
+Example:
+# Main Heading
+
+This is a paragraph with **bold text** and *italic text*.
+
+## Subheading
+
+- Bullet point 1
+- Bullet point 2
+
+[Link text](https://example.com)"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-primary">🚀 Generate Article File</button>
+                    <button type="button" class="btn-secondary" onclick="clearForm()">🗑️ Clear Form</button>
+                </div>
+            </form>
+
+            <div id="output" class="output" style="display: none;">
+                <h3>📄 Generated Article File</h3>
+                <p><strong>Filename:</strong> <span id="filename" class="filename"></span></p>
+                <p><strong>Instructions:</strong> Copy the content below and create a new file in your GitHub repository's <span class="filename">_posts</span> folder with the filename shown above.</p>
+                <pre id="generatedContent"></pre>
+                <div class="button-group">
+                    <button class="btn-primary" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+                    <button class="btn-secondary" onclick="openGitHub()">🔗 Open GitHub Repository</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        PagesCMS.init({
-            settings: {
-                github: {
-                    repo: 'WorstGen/futures-bright',
-                    branch: 'gh-branch'
-                }
-            },
-            collections: [{
-                name: 'articles',
-                label: 'Articles',
-                folder: '_posts',
-                fields: [
-                    {name: 'title', label: 'Title', widget: 'string'},
-                    {name: 'category', label: 'Category', widget: 'string'},
-                    {name: 'date', label: 'Date', widget: 'datetime'},
-                    {name: 'author', label: 'Author', widget: 'string', default: 'Editor'},
-                    {name: 'excerpt', label: 'Excerpt', widget: 'text'},
-                    {name: 'body', label: 'Body', widget: 'markdown'}
-                ]
-            }]
+        document.getElementById('articleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const category = document.getElementById('category').value;
+            const author = document.getElementById('author').value || 'Editor';
+            const excerpt = document.getElementById('excerpt').value;
+            const content = document.getElementById('content').value;
+            
+            if (!title || !category || !excerpt || !content) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Generate filename
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const slug = title.toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .substring(0, 50);
+            
+            const filename = `${year}-${month}-${day}-${slug}.md`;
+            
+            // Generate frontmatter
+            const frontmatter = `---
+title: "${title}"
+category: "${category}"
+date: ${year}-${month}-${day}
+author: "${author}"
+excerpt: "${excerpt}"
+---
+
+${content}`;
+            
+            // Display output
+            document.getElementById('filename').textContent = filename;
+            document.getElementById('generatedContent').textContent = frontmatter;
+            document.getElementById('output').style.display = 'block';
+            
+            // Scroll to output
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
         });
+        
+        function clearForm() {
+            document.getElementById('articleForm').reset();
+            document.getElementById('output').style.display = 'none';
+        }
+        
+        function copyToClipboard() {
+            const content = document.getElementById('generatedContent').textContent;
+            navigator.clipboard.writeText(content).then(function() {
+                alert('Content copied to clipboard!');
+            }).catch(function() {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = content;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Content copied to clipboard!');
+            });
+        }
+        
+        function openGitHub() {
+            window.open('https://github.com/WorstGen/futures-bright', '_blank');
+        }
     </script>
 </body>
 </html>
