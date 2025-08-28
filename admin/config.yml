@@ -2,7 +2,8 @@ backend:
   name: github
   repo: WorstGen/futures-bright
   branch: gh-branch
-  client_id: Ov23liaEHD59Q0sfR1yI
+  auth_type: pkce
+  base_url: https://api.github.com
 
 media_folder: "images"
 public_folder: "/images"
