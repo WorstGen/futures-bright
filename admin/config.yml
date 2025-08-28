@@ -2,7 +2,6 @@ backend:
   name: github
   repo: worstgen/futures-bright
   branch: gh-pages
-  auth_type: pkce
   client_id: Ov23liaEHD59Q0sfR1yI
 
 media_folder: "images"
