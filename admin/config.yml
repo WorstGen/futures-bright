@@ -3,7 +3,7 @@ backend:
   repo: WorstGen/futures-bright
   branch: gh-branch
   auth_type: pkce
-  base_url: https://api.github.com
+  client_id: Ov23liaEHD59Q0sfR1yI
 
 media_folder: "images"
 public_folder: "/images"
