@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: worstgen/futures-bright
-  branch: gh-pages
+  branch: gh-branch
   auth_type: pkce
   base_url: https://api.github.com
 
