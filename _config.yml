@@ -1,0 +1,39 @@
+# Site settings
+title: "Future's Bright"
+description: "Independent journalism for a better tomorrow"
+url: "https://worstgen.github.io"
+baseurl: "/futures-bright" # Change this to your repo name
+
+# Jekyll settings
+markdown: kramdown
+highlighter: rouge
+permalink: /articles/:year/:month/:day/:title/
+
+# Collections for better organization
+collections:
+  posts:
+    output: true
+    permalink: /articles/:year/:month/:day/:title/
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Front matter defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "article"
+      author: "Editor"
