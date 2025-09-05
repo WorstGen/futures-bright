@@ -36,3 +36,328 @@ title: Home
                 </div>
             </article>
             {% endfor %}
+        </section>
+
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Trending Stories</h3>
+                {% for post in site.posts offset:3 limit:3 %}
+                <div class="trending-item">
+                    <div class="trending-title">
+                        <a href="{{ post.url | relative_url }}" style="color: var(--text-primary); text-decoration: none;">
+                            {{ post.title }}
+                        </a>
+                    </div>
+                    <div class="trending-meta">{{ post.date | date: "%B %d, %Y" }} • {{ post.content | number_of_words | divided_by: 200 }} min read</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="sidebar-section newsletter">
+                <h3>Stay Informed</h3>
+                <p>Get our weekly digest of the most important stories and analysis delivered to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    {% assign categories = site.posts | map: 'category' | uniq | sort %}
+                    {% for category in categories %}
+                        {% assign category_posts = site.posts | where: 'category', category %}
+                        <a href="#{{ category | slugify }}" style="color: var(--text-secondary); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                            {{ category }} ({{ category_posts | size }})
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<style>
+    .hero {
+        padding: 60px 0;
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    }
+
+    .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, var(--text-primary), var(--accent-gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.02em;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 500;
+    }
+
+    .main-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        padding: 40px 0;
+    }
+
+    .articles-section h2 {
+        font-size: 2.8rem;
+        font-weight: 900;
+        margin-bottom: 30px;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .article-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .article-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, var(--border-color), var(--bg-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .article-content {
+        padding: 25px;
+    }
+
+    .article-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .article-category {
+        background: var(--accent-gold);
+        color: #000;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .article-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+    }
+
+    .article-excerpt {
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .read-more {
+        background: linear-gradient(45deg, var(--accent-gold), var(--accent-orange));
+        color: #000;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .read-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .sidebar {
+        padding-top: 20px;
+    }
+
+    .sidebar-section {
+        background: var(--bg-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        border: 1px solid var(--border-color);
+    }
+
+    .sidebar-section h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: var(--accent-gold);
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.01em;
+    }
+
+    .trending-item {
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .trending-item:last-child {
+        border-bottom: none;
+    }
+
+    .trending-title {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+        font-size: 0.95rem;
+        font-family: 'Inter', sans-serif;
+        line-height: 1.4;
+    }
+
+    .trending-meta {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    .newsletter {
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+        color: #000;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .newsletter h3 {
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .newsletter input {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .newsletter button {
+        background: #000;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .newsletter button:hover {
+        background: #333;
+    }
+
+    @media (max-width: 768px) {
+        .main-content {
+            grid-template-columns: 1fr;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .newsletter-form {
+            flex-direction: column;
+        }
+        
+        .articles-section h2 {
+            font-size: 2.2rem;
+        }
+        
+        .article-title {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+        
+        .hero {
+            padding: 40px 0;
+        }
+        
+        .articles-section h2 {
+            font-size: 1.8rem;
+        }
+        
+        .article-content {
+            padding: 20px;
+        }
+        
+        .sidebar-section {
+            padding: 20px;
+        }
+    }
+</style>
+
+<script>
+    // Newsletter form handling
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        if (email) {
+            alert('Thank you for subscribing! We\'ll send you our latest updates.');
+            this.querySelector('input[type="email"]').value = '';
+        }
+    });
+
+    // Add some interactivity to article cards
+    document.querySelectorAll('.article-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = 'var(--card-hover-bg)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'var(--bg-secondary)';
+        });
+    });
+</script>
