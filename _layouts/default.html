@@ -26,13 +26,13 @@
         }
 
         [data-theme="light"] {
-            --bg-primary: #fff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #000;
-            --text-secondary: #333;
-            --text-muted: #666;
-            --border-color: #e1e5e9;
-            --card-hover-bg: #f0f0f0;
+            --bg-primary: #fff8dc;
+            --bg-secondary: #fffacd;
+            --text-primary: #2c2c2c;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --border-color: #f0e68c;
+            --card-hover-bg: #f5f5dc;
         }
 
         /* Include ALL your existing CSS styles here - I'm truncating for brevity */
@@ -81,28 +81,21 @@
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
         }
 
-        /* Light mode logo adjustments */
+        /* Light mode logo visibility */
         [data-theme="light"] .logo {
             background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
             border-radius: 12px;
             padding: 8px 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
         }
 
         [data-theme="light"] .logo:hover {
             background: linear-gradient(135deg, #2d2d2d, #404040);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
             transform: translateY(-2px);
         }
 
-        [data-theme="light"] .logo-image {
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-        }
-
-        [data-theme="light"] .logo-image:hover {
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
-        }
 
         .nav {
             display: flex;
