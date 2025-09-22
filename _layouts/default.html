@@ -65,30 +65,20 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            text-decoration: none;
         }
 
-        .crown {
-            width: 45px;
-            height: 45px;
-            color: var(--accent-gold);
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+        .logo-image {
+            height: 50px;
+            width: auto;
             transition: all 0.3s ease;
             cursor: pointer;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
         }
 
-        .crown:hover {
-            transform: rotate(10deg) scale(1.1);
+        .logo-image:hover {
+            transform: scale(1.05);
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
-        }
-
-        .site-title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-            font-family: 'Inter', sans-serif;
         }
 
         .nav {
@@ -491,13 +481,8 @@
                 display: flex;
             }
             
-            .site-title {
-                font-size: 2rem;
-            }
-            
-            .crown {
-                width: 35px;
-                height: 35px;
+            .logo-image {
+                height: 40px;
             }
             
             .article-title-main {
@@ -522,13 +507,8 @@
                 padding: 0 16px;
             }
             
-            .site-title {
-                font-size: 1.6rem;
-            }
-            
-            .crown {
-                width: 30px;
-                height: 30px;
+            .logo-image {
+                height: 35px;
             }
             
             .mobile-nav-content {
@@ -562,8 +542,8 @@
                 padding: 0 12px;
             }
             
-            .site-title {
-                font-size: 1.4rem;
+            .logo-image {
+                height: 30px;
             }
             
             .mobile-nav-content {
@@ -578,27 +558,7 @@
     <header class="header">
         <div class="header-content">
             <a href="{{ '/' | relative_url }}" class="logo">
-                <svg class="crown" viewBox="0 0 100 100" fill="currentColor">
-                    <!-- Crown base -->
-                    <rect x="15" y="75" width="70" height="8" rx="2"/>
-                    <!-- Crown band -->
-                    <rect x="20" y="65" width="60" height="10" rx="2"/>
-                    <!-- Crown points -->
-                    <polygon points="25,65 30,45 35,65"/>
-                    <polygon points="35,65 40,35 45,65"/>
-                    <polygon points="45,65 50,25 55,65"/>
-                    <polygon points="55,65 60,35 65,65"/>
-                    <polygon points="65,65 70,45 75,65"/>
-                    <!-- Decorative gems -->
-                    <circle cx="30" cy="55" r="2" fill="var(--accent-gold)"/>
-                    <circle cx="40" cy="50" r="2.5" fill="var(--accent-gold)"/>
-                    <circle cx="50" cy="45" r="3" fill="var(--accent-gold)"/>
-                    <circle cx="60" cy="50" r="2.5" fill="var(--accent-gold)"/>
-                    <circle cx="70" cy="55" r="2" fill="var(--accent-gold)"/>
-                    <!-- Center jewel -->
-                    <circle cx="50" cy="35" r="4" fill="var(--accent-orange)"/>
-                </svg>
-                <span class="site-title">{{ site.title }}</span>
+                <img src="/assets/images/futuresbright.png" alt="Future's Bright" class="logo-image">
             </a>
             
             <!-- Desktop Navigation -->
@@ -699,10 +659,11 @@
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
             
-            // Crown click Easter egg
-            const crown = document.querySelector('.crown');
-            if (crown) {
-                crown.addEventListener('click', function() {
+            // Logo click Easter egg
+            const logoImage = document.querySelector('.logo-image');
+            if (logoImage) {
+                logoImage.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const messages = [
                         '👑 Future\'s so bright, you need a crown!',
                         '💡 Innovation never sleeps!',
