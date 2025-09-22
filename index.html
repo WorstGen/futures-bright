@@ -5,15 +5,28 @@ title: Home
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Independent Journalism</h1>
-        <p>Illuminating truth in an age of information. Fearless reporting, thoughtful analysis, and the stories that matter most.</p>
+        <h1>Future's Bright</h1>
+        <p>Your hub for memetics, creativity, and innovation. Stay informed with the latest in creative culture, stay connected with tools and communities that matter.</p>
+        <div class="hero-pillars">
+            <div class="pillar">
+                <div class="pillar-icon">📰</div>
+                <h3>Stay Informed</h3>
+                <p>Current events, news, and cultural highlights in creativity, memes, and innovation</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">🔗</div>
+                <h3>Stay Connected</h3>
+                <p>Curated tools, communities, and hidden gems for creative minds</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <main class="container">
     <div class="main-content">
         <section class="articles-section">
-            <h2>Latest Articles</h2>
+            <h2>Latest Insights</h2>
+            <p class="section-subtitle">Stay informed with the latest in creativity, memetics, and innovation</p>
             
             {% for post in site.posts limit:3 %}
             <article class="article-card">
@@ -21,7 +34,9 @@ title: Home
                     {% if post.featured_image %}
                         <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">
                     {% else %}
-                        Featured Image Placeholder
+                        <div class="placeholder-image">
+                            <span class="placeholder-emoji">{{ post.emoji | default: '💡' }}</span>
+                        </div>
                     {% endif %}
                 </div>
                 <div class="article-content">
@@ -32,7 +47,7 @@ title: Home
                     </div>
                     <h3 class="article-title">{{ post.title }}</h3>
                     <p class="article-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-                    <a href="{{ post.url | relative_url }}" class="read-more">Read Full Article</a>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Explore More</a>
                 </div>
             </article>
             {% endfor %}
@@ -40,7 +55,7 @@ title: Home
 
         <aside class="sidebar">
             <div class="sidebar-section">
-                <h3>Trending Stories</h3>
+                <h3>🔥 Trending Now</h3>
                 {% for post in site.posts offset:3 limit:3 %}
                 <div class="trending-item">
                     <div class="trending-title">
@@ -53,9 +68,37 @@ title: Home
                 {% endfor %}
             </div>
 
+            <div class="sidebar-section tools-section">
+                <h3>🛠️ Stay Connected</h3>
+                <p>Curated tools and communities for creative minds</p>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">🎨</div>
+                        <div class="tool-info">
+                            <h4>Creative Tools</h4>
+                            <p>AI art, design, and creative software</p>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">💬</div>
+                        <div class="tool-info">
+                            <h4>Communities</h4>
+                            <p>Discord servers, forums, and groups</p>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">💎</div>
+                        <div class="tool-info">
+                            <h4>Hidden Gems</h4>
+                            <p>Under-the-radar resources</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="sidebar-section newsletter">
-                <h3>Stay Informed</h3>
-                <p>Get our weekly digest of the most important stories and analysis delivered to your inbox.</p>
+                <h3>📧 Stay Informed</h3>
+                <p>Get our weekly digest of creativity, memes, and innovation delivered to your inbox.</p>
                 <form class="newsletter-form">
                     <input type="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
@@ -63,7 +106,7 @@ title: Home
             </div>
 
             <div class="sidebar-section">
-                <h3>Categories</h3>
+                <h3>🏷️ Categories</h3>
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     {% assign categories = site.posts | map: 'category' | uniq | sort %}
                     {% for category in categories %}
@@ -107,8 +150,51 @@ title: Home
         font-size: 1.3rem;
         color: var(--text-secondary);
         max-width: 600px;
-        margin: 0 auto;
+        margin: 0 auto 40px auto;
         font-weight: 500;
+    }
+
+    .hero-pillars {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .pillar {
+        background: var(--bg-secondary);
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .pillar:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .pillar-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .pillar h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: var(--accent-gold);
+        font-family: 'Inter', sans-serif;
+    }
+
+    .pillar p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
     }
 
     .main-content {
@@ -121,10 +207,17 @@ title: Home
     .articles-section h2 {
         font-size: 2.8rem;
         font-weight: 900;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         color: var(--text-primary);
         letter-spacing: -0.02em;
         font-family: 'Inter', sans-serif;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+        font-weight: 500;
     }
 
     .article-card {
@@ -151,6 +244,20 @@ title: Home
         justify-content: center;
         color: var(--text-muted);
         font-size: 0.9rem;
+    }
+
+    .placeholder-image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+    }
+
+    .placeholder-emoji {
+        font-size: 4rem;
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
     }
 
     .article-content {
@@ -294,6 +401,53 @@ title: Home
         background: #333;
     }
 
+    .tools-section {
+        background: linear-gradient(135deg, var(--bg-secondary), var(--border-color));
+    }
+
+    .tools-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .tool-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: var(--bg-primary);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .tool-item:hover {
+        border-color: var(--accent-gold);
+        transform: translateX(5px);
+    }
+
+    .tool-icon {
+        font-size: 1.5rem;
+        min-width: 30px;
+    }
+
+    .tool-info h4 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .tool-info p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin: 0;
+        line-height: 1.3;
+    }
+
     @media (max-width: 768px) {
         .main-content {
             grid-template-columns: 1fr;
@@ -301,6 +455,15 @@ title: Home
         
         .hero h1 {
             font-size: 2.5rem;
+        }
+
+        .hero-pillars {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .pillar {
+            padding: 20px;
         }
         
         .newsletter-form {
@@ -313,6 +476,14 @@ title: Home
         
         .article-title {
             font-size: 1.4rem;
+        }
+
+        .tools-grid {
+            gap: 10px;
+        }
+
+        .tool-item {
+            padding: 12px;
         }
     }
 
@@ -360,4 +531,51 @@ title: Home
             this.style.backgroundColor = 'var(--bg-secondary)';
         });
     });
+
+    // Easter egg: Konami code for meme generator
+    let konamiCode = [];
+    const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+    
+    document.addEventListener('keydown', function(e) {
+        konamiCode.push(e.keyCode);
+        if (konamiCode.length > konamiSequence.length) {
+            konamiCode.shift();
+        }
+        
+        if (konamiCode.join(',') === konamiSequence.join(',')) {
+            showMemeGenerator();
+            konamiCode = [];
+        }
+    });
+
+    function showMemeGenerator() {
+        const memeModal = document.createElement('div');
+        memeModal.innerHTML = `
+            <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                <div style="background: var(--bg-secondary); padding: 30px; border-radius: 12px; border: 2px solid var(--accent-gold); max-width: 500px; text-align: center;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 20px;">🎉 Secret Meme Generator! 🎉</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">You found the hidden feature! Here's a random meme for you:</p>
+                    <div id="meme-content" style="font-size: 2rem; margin: 20px 0;">${getRandomMeme()}</div>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: var(--accent-gold); color: #000; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Close</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(memeModal);
+    }
+
+    function getRandomMeme() {
+        const memes = [
+            '🚀 Future\'s so bright, I gotta wear shades! 😎',
+            '💡 When you realize memes are the future of communication',
+            '🎨 AI: "I can create art" | Humans: "Hold my creativity"',
+            '🔥 This site is so good, it should be illegal',
+            '💎 Hidden gems everywhere, just like this Easter egg!',
+            '🧬 Memes evolving faster than my understanding',
+            '🎭 Creativity is just organized chaos with style',
+            '⚡ Innovation at the speed of thought',
+            '🌟 Making the future bright, one meme at a time',
+            '🎪 Welcome to the circus of creativity!'
+        ];
+        return memes[Math.floor(Math.random() * memes.length)];
+    }
 </script>
