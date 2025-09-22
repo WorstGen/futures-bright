@@ -2,10 +2,10 @@
 layout: article
 title: "Building Community in an Increasingly Connected World"
 date: 2024-12-10
-author: "Editor"
-category: "Society"
+author: "Future's Bright Team"
+category: "Communities"
 excerpt: "Despite unprecedented connectivity, many report feeling more isolated than ever. We examine the paradox of digital connection and explore pathways to genuine community building."
-featured_image: "/assets/images/digital-community.jpg"
+emoji: "🤝"
 ---
 
 # Building Community in an Increasingly Connected World

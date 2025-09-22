@@ -2,10 +2,10 @@
 layout: article
 title: "The Future of Democratic Discourse in Digital Age"
 date: 2024-12-15
-author: "Editor"
-category: "Politics"
+author: "Future's Bright Team"
+category: "Innovation"
 excerpt: "Exploring how social media platforms are reshaping political conversation and what it means for democracy. An in-depth analysis of the challenges and opportunities facing modern civic engagement..."
-featured_image: "https://via.placeholder.com/800x400"
+emoji: "🗳️"
 ---
 
 # The Future of Democratic Discourse in Digital Age

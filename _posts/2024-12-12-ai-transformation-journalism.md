@@ -2,10 +2,10 @@
 layout: article
 title: "AI and the Transformation of Modern Journalism"
 date: 2024-12-12
-author: "Editor"
-category: "Technology"
+author: "Future's Bright Team"
+category: "Innovation"
 excerpt: "How artificial intelligence is changing the landscape of news reporting, fact-checking, and media consumption. A critical examination of both the promises and perils of automated journalism."
-featured_image: "/assets/images/ai-journalism.jpg"
+emoji: "🤖"
 ---
 
 # AI and the Transformation of Modern Journalism

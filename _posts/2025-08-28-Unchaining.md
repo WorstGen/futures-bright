@@ -1,9 +1,11 @@
 ---
-title: "Unchaining"
-category: "Technology"
+layout: article
+title: "Unchaining: The Future of Decentralized Finance"
+category: "Innovation"
 date: 2025-08-28
-author: "Aces"
-excerpt: "Unchaining | A Breakdown of H Wonder's Blog post."
+author: "Future's Bright Team"
+excerpt: "Unchaining | A Breakdown of H Wonder's Blog post about the future of crypto liquidity and user experience."
+emoji: "⛓️"
 ---
 
 Crypto has exploded. What started with a few new coins and blockchains each year has turned into thousands of new chains and tokens launching daily.
