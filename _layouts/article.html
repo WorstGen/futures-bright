@@ -58,6 +58,7 @@
         .mobile-theme-toggle:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3); }
         
         .article-content-wrapper { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .main-content { padding-top: 20px; }
         .article-header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid var(--border-color); }
         .article-title-main { font-size: 3rem; font-weight: 900; margin-bottom: 20px; color: var(--text-primary); font-family: 'Inter', sans-serif; letter-spacing: -0.02em; line-height: 1.2; }
         .article-meta-main { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.95rem; }
@@ -156,9 +157,10 @@
         </div>
     </header>
 
-    <main class="article-content-wrapper">
-        <article>
-            <header class="article-header">
+    <main class="main-content">
+        <div class="article-content-wrapper">
+            <article>
+                <header class="article-header">
                 <h1 class="article-title-main">{{ page.title }}</h1>
                 <div class="article-meta-main">
                     <span class="article-category-main">{{ page.category }}</span>
@@ -172,8 +174,9 @@
                 {{ content }}
             </div>
             
-            <a href="{{ '/' | relative_url }}" class="back-to-home">← Back to Latest Articles</a>
-        </article>
+                <a href="{{ '/' | relative_url }}" class="back-to-home">← Back to Latest Articles</a>
+            </article>
+        </div>
     </main>
 
     <script>
@@ -218,17 +221,24 @@
             const logoImage = document.querySelector('.logo-image');
             if (logoImage) {
                 logoImage.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const messages = [
-                        '👑 Future\'s so bright, you need a crown!',
-                        '💡 Innovation never sleeps!',
-                        '🎨 Creativity is the future!',
-                        '🚀 Blast off to the future!',
-                        '💎 You found the hidden gem!',
-                        '🌟 The future is bright indeed!'
-                    ];
-                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                    alert(randomMessage);
+                    // Only prevent default if it's a right-click or middle-click
+                    if (e.button === 1 || e.button === 2) {
+                        e.preventDefault();
+                    }
+                    
+                    // Check if it's a regular left-click
+                    if (e.button === 0) {
+                        const messages = [
+                            '👑 Future\'s so bright, you need a crown!',
+                            '💡 Innovation never sleeps!',
+                            '🎨 Creativity is the future!',
+                            '🚀 Blast off to the future!',
+                            '💎 You found the hidden gem!',
+                            '🌟 The future is bright indeed!'
+                        ];
+                        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                        alert(randomMessage);
+                    }
                 });
             }
 
