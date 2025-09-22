@@ -332,11 +332,12 @@
             <!-- Desktop Navigation -->
             <nav class="nav">
                 <a href="{{ '/' | relative_url }}">Latest</a>
-                <a href="#creativity">Creativity</a>
-                <a href="#innovation">Innovation</a>
-                <a href="#memes">Memes</a>
+                <a href="{{ '/creativity' | relative_url }}">Creativity</a>
+                <a href="{{ '/innovation' | relative_url }}">Innovation</a>
+                <a href="{{ '/memes' | relative_url }}">Memes</a>
                 <a href="{{ '/tools' | relative_url }}">Tools</a>
-                <a href="#communities">Communities</a>
+                <a href="{{ '/communities' | relative_url }}">Communities</a>
+                <a href="{{ '/about' | relative_url }}">About</a>
                 <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             </nav>
         </div>

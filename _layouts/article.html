@@ -28,7 +28,8 @@
         .header { background: var(--bg-primary); padding: 20px 0; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
         .header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
         .logo { display: flex; align-items: center; gap: 15px; }
-        .crown { width: 45px; height: 45px; color: var(--accent-gold); filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3)); }
+        .crown { width: 45px; height: 45px; color: var(--accent-gold); filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3)); transition: all 0.3s ease; cursor: pointer; }
+        .crown:hover { transform: rotate(10deg) scale(1.1); filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)); }
         .site-title { font-size: 2.8rem; font-weight: 900; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; font-family: 'Inter', sans-serif; }
         .nav { display: flex; gap: 30px; align-items: center; }
         .nav a { color: var(--text-primary); text-decoration: none; font-weight: 600; transition: color 0.3s; }
@@ -73,10 +74,12 @@
             </a>
             <nav class="nav">
                 <a href="{{ '/' | relative_url }}">Latest</a>
-                <a href="#politics">Politics</a>
-                <a href="#tech">Technology</a>
-                <a href="#society">Society</a>
-                <a href="#about">About</a>
+                <a href="{{ '/creativity' | relative_url }}">Creativity</a>
+                <a href="{{ '/innovation' | relative_url }}">Innovation</a>
+                <a href="{{ '/memes' | relative_url }}">Memes</a>
+                <a href="{{ '/tools' | relative_url }}">Tools</a>
+                <a href="{{ '/communities' | relative_url }}">Communities</a>
+                <a href="{{ '/about' | relative_url }}">About</a>
                 <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             </nav>
         </div>
@@ -113,6 +116,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Crown click Easter egg
+            const crown = document.querySelector('.crown');
+            if (crown) {
+                crown.addEventListener('click', function() {
+                    const messages = [
+                        '👑 Future\'s so bright, you need a crown!',
+                        '💡 Innovation never sleeps!',
+                        '🎨 Creativity is the future!',
+                        '🚀 Blast off to the future!',
+                        '💎 You found the hidden gem!',
+                        '🌟 The future is bright indeed!'
+                    ];
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    alert(randomMessage);
+                });
+            }
         });
     </script>
 </body>
