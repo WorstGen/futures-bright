@@ -73,6 +73,13 @@
             height: 45px;
             color: var(--accent-gold);
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .crown:hover {
+            transform: rotate(10deg) scale(1.1);
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
         }
 
         .site-title {
@@ -160,6 +167,19 @@
         .copyright {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        .easter-egg {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .easter-egg:hover {
+            opacity: 1;
+            color: var(--accent-gold);
+            transform: scale(1.05);
         }
 
         /* Article-specific styles */
@@ -312,10 +332,11 @@
             <!-- Desktop Navigation -->
             <nav class="nav">
                 <a href="{{ '/' | relative_url }}">Latest</a>
-                <a href="#politics">Politics</a>
-                <a href="#tech">Technology</a>
-                <a href="#society">Society</a>
-                <a href="#about">About</a>
+                <a href="#creativity">Creativity</a>
+                <a href="#innovation">Innovation</a>
+                <a href="#memes">Memes</a>
+                <a href="{{ '/tools' | relative_url }}">Tools</a>
+                <a href="#communities">Communities</a>
                 <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             </nav>
         </div>
@@ -334,6 +355,7 @@
             </div>
             <div class="copyright">
                 <p>&copy; 2024 {{ site.title }}. {{ site.description }}</p>
+                <p class="easter-egg">Made with 💡 and a healthy dose of memes</p>
             </div>
         </div>
     </footer>
@@ -352,6 +374,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Crown click Easter egg
+            const crown = document.querySelector('.crown');
+            if (crown) {
+                crown.addEventListener('click', function() {
+                    const messages = [
+                        '👑 Future\'s so bright, you need a crown!',
+                        '💡 Innovation never sleeps!',
+                        '🎨 Creativity is the future!',
+                        '🚀 Blast off to the future!',
+                        '💎 You found the hidden gem!',
+                        '🌟 The future is bright indeed!'
+                    ];
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    alert(randomMessage);
+                });
+            }
         });
     </script>
 </body>
