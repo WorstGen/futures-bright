@@ -59,6 +59,28 @@
         
         .article-content-wrapper { max-width: 800px; margin: 40px auto; padding: 0 20px; }
         .main-content { padding-top: 20px; }
+
+        /* Easter Egg Notification */
+        .easter-egg-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--accent-orange));
+            color: #000;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 300px;
+        }
+
+        .easter-egg-notification.show {
+            transform: translateX(0);
+        }
         .article-header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid var(--border-color); }
         .article-title-main { font-size: 3rem; font-weight: 900; margin-bottom: 20px; color: var(--text-primary); font-family: 'Inter', sans-serif; letter-spacing: -0.02em; line-height: 1.2; }
         .article-meta-main { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.95rem; }
@@ -237,9 +259,39 @@
                             '🌟 The future is bright indeed!'
                         ];
                         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                        alert(randomMessage);
+                        showEasterEggNotification(randomMessage);
                     }
                 });
+            }
+
+            // Easter egg notification function
+            function showEasterEggNotification(message) {
+                // Remove existing notification if any
+                const existingNotification = document.querySelector('.easter-egg-notification');
+                if (existingNotification) {
+                    existingNotification.remove();
+                }
+
+                // Create new notification
+                const notification = document.createElement('div');
+                notification.className = 'easter-egg-notification';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                // Show notification
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 100);
+
+                // Hide notification after 3 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }, 3000);
             }
 
             // Close mobile nav when clicking on links
