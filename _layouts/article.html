@@ -38,19 +38,25 @@
         .theme-toggle:hover { background: var(--accent-gold); color: #000; }
 
         /* Mobile Navigation */
-        .mobile-nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; padding: 8px; border-radius: 6px; transition: all 0.3s ease; }
-        .mobile-nav-toggle:hover { background: rgba(255, 215, 0, 0.1); color: var(--accent-gold); }
-        .mobile-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-primary); border-top: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); z-index: 1000; }
-        .mobile-nav.active { display: block; }
-        .mobile-nav-content { padding: 20px; max-width: 1200px; margin: 0 auto; }
-        .mobile-nav-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .mobile-nav-links a { display: block; padding: 15px 20px; color: var(--text-primary); text-decoration: none; font-weight: 600; border-radius: 8px; transition: all 0.3s ease; border: 1px solid transparent; }
-        .mobile-nav-links a:hover { color: var(--accent-gold); background: rgba(255, 215, 0, 0.1); border-color: var(--accent-gold); }
-        .mobile-nav-actions { display: flex; gap: 15px; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--border-color); }
-        .mobile-theme-toggle { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; flex: 1; }
-        .mobile-theme-toggle:hover { background: var(--accent-gold); color: #000; }
-        .mobile-nav-close { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; }
-        .mobile-nav-close:hover { background: var(--accent-gold); color: #000; }
+        .mobile-nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.2rem; cursor: pointer; padding: 8px; border-radius: 8px; transition: all 0.2s ease; position: relative; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .mobile-nav-toggle:hover { background: rgba(255, 215, 0, 0.1); color: var(--accent-gold); transform: scale(1.05); }
+        .mobile-nav-toggle.active { color: var(--accent-gold); background: rgba(255, 215, 0, 0.15); }
+        .mobile-nav { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; }
+        .mobile-nav.active { opacity: 1; visibility: visible; }
+        .mobile-nav-content { position: absolute; top: 80px; left: 20px; right: 20px; background: var(--bg-primary); border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); padding: 0; max-width: 400px; margin: 0 auto; transform: translateY(-20px); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .mobile-nav.active .mobile-nav-content { transform: translateY(0); }
+        .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border-color); }
+        .mobile-nav-title { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+        .mobile-nav-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; padding: 4px; border-radius: 6px; transition: all 0.2s ease; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+        .mobile-nav-close:hover { color: var(--accent-gold); background: rgba(255, 215, 0, 0.1); }
+        .mobile-nav-links { padding: 8px; }
+        .mobile-nav-links a { display: block; padding: 16px 20px; color: var(--text-primary); text-decoration: none; font-weight: 500; border-radius: 12px; transition: all 0.2s ease; margin: 4px 0; font-size: 0.95rem; position: relative; overflow: hidden; }
+        .mobile-nav-links a::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent); transition: left 0.5s ease; }
+        .mobile-nav-links a:hover::before { left: 100%; }
+        .mobile-nav-links a:hover { color: var(--accent-gold); background: rgba(255, 215, 0, 0.08); transform: translateX(4px); }
+        .mobile-nav-actions { padding: 16px 24px 24px; border-top: 1px solid var(--border-color); background: var(--bg-secondary); border-radius: 0 0 16px 16px; }
+        .mobile-theme-toggle { background: linear-gradient(45deg, var(--accent-gold), var(--accent-orange)); border: none; color: #000; padding: 14px 24px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; width: 100%; text-align: center; }
+        .mobile-theme-toggle:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3); }
         
         .article-content-wrapper { max-width: 800px; margin: 40px auto; padding: 0 20px; }
         .article-header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid var(--border-color); }
@@ -68,29 +74,42 @@
         .back-to-home:hover { background: var(--accent-gold); color: #000; transform: translateY(-2px); }
         
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav { gap: 24px; }
+            .nav a { padding: 8px 12px; font-size: 0.9rem; }
+        }
+
         @media (max-width: 1024px) {
             .nav { gap: 20px; }
-            .nav a { padding: 6px 10px; font-size: 0.9rem; }
+            .nav a { padding: 6px 10px; font-size: 0.85rem; }
         }
 
         @media (max-width: 768px) {
-            .header-content { padding: 0 15px; }
+            .header-content { padding: 0 20px; }
             .nav { display: none; }
-            .mobile-nav-toggle { display: block; }
+            .mobile-nav-toggle { display: flex; }
             .site-title { font-size: 2rem; }
             .crown { width: 35px; height: 35px; }
             .article-title-main { font-size: 2.2rem; }
             .article-meta-main { flex-direction: column; align-items: center; gap: 10px; }
+            .mobile-nav-content { left: 16px; right: 16px; top: 70px; }
         }
 
         @media (max-width: 480px) {
-            .header-content { padding: 0 10px; }
+            .header-content { padding: 0 16px; }
             .site-title { font-size: 1.6rem; }
             .crown { width: 30px; height: 30px; }
-            .mobile-nav-content { padding: 15px; }
-            .mobile-nav-links a { padding: 12px 15px; font-size: 0.9rem; }
-            .mobile-nav-actions { flex-direction: column; gap: 10px; }
-            .mobile-theme-toggle, .mobile-nav-close { width: 100%; text-align: center; }
+            .mobile-nav-content { left: 12px; right: 12px; top: 60px; max-width: none; }
+            .mobile-nav-header { padding: 16px 20px; }
+            .mobile-nav-links { padding: 4px; }
+            .mobile-nav-links a { padding: 14px 16px; font-size: 0.9rem; margin: 2px 0; }
+            .mobile-nav-actions { padding: 12px 20px 20px; }
+        }
+
+        @media (max-width: 360px) {
+            .header-content { padding: 0 12px; }
+            .site-title { font-size: 1.4rem; }
+            .mobile-nav-content { left: 8px; right: 8px; top: 55px; }
         }
     </style>
 </head>
@@ -127,6 +146,10 @@
         <!-- Mobile Navigation -->
         <div class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <h3 class="mobile-nav-title">Navigation</h3>
+                    <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+                </div>
                 <div class="mobile-nav-links">
                     <a href="{{ '/' | relative_url }}">Latest</a>
                     <a href="{{ '/creativity' | relative_url }}">Creativity</a>
@@ -138,7 +161,6 @@
                 </div>
                 <div class="mobile-nav-actions">
                     <button class="mobile-theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-                    <button class="mobile-nav-close" onclick="toggleMobileNav()">✕ Close</button>
                 </div>
             </div>
         </div>
@@ -178,12 +200,10 @@
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
             
             if (mobileNav.classList.contains('active')) {
-                mobileNav.classList.remove('active');
-                mobileNavToggle.innerHTML = '☰';
-                document.body.style.overflow = 'auto';
+                closeMobileNav();
             } else {
                 mobileNav.classList.add('active');
-                mobileNavToggle.innerHTML = '✕';
+                mobileNavToggle.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
         }
@@ -195,7 +215,7 @@
             
             if (mobileNav.classList.contains('active')) {
                 mobileNav.classList.remove('active');
-                mobileNavToggle.innerHTML = '☰';
+                mobileNavToggle.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         }
