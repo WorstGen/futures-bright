@@ -718,7 +718,7 @@
                     showEasterEggNotification(randomMessage);
                 }
 
-                // Click event for desktop
+                // Click event for both desktop and mobile
                 logoImage.addEventListener('click', function(e) {
                     // Prevent default navigation for right-click or middle-click on desktop
                     if (e.button === 1 || e.button === 2) {
@@ -727,12 +727,6 @@
                     }
                     
                     // Show Easter egg for any click
-                    triggerEasterEgg();
-                });
-
-                // Touch event for mobile
-                logoImage.addEventListener('touchend', function(e) {
-                    e.preventDefault();
                     triggerEasterEgg();
                 });
             }
