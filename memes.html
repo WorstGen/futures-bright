@@ -1,0 +1,517 @@
+---
+layout: default
+title: Memes
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>🧬 Memes</h1>
+        <p>Explore the evolution of digital culture through memes. From viral trends to cultural commentary, discover how memes are shaping our world.</p>
+    </div>
+</section>
+
+<main class="container">
+    <div class="category-content">
+        <div class="category-intro">
+            <h2>The DNA of Digital Culture</h2>
+            <p>Memes are more than just internet jokes—they're the building blocks of digital culture, evolving and spreading ideas faster than any traditional medium. They capture the zeitgeist, challenge norms, and create shared experiences across global communities.</p>
+        </div>
+
+        <div class="articles-grid">
+            {% assign meme_posts = site.posts | where: 'category', 'Memes' %}
+            {% for post in meme_posts %}
+            <article class="article-card">
+                <div class="article-image">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">
+                    {% else %}
+                        <div class="placeholder-image">
+                            <span class="placeholder-emoji">{{ post.emoji | default: '🧬' }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">{{ post.category }}</span>
+                        <span>{{ post.date | date: "%B %d, %Y" }}</span>
+                        <span>By {{ post.author }}</span>
+                    </div>
+                    <h3 class="article-title">{{ post.title }}</h3>
+                    <p class="article-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Explore More</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="meme-categories">
+            <h2>🎭 Meme Categories</h2>
+            <div class="meme-types-grid">
+                <div class="meme-type-card">
+                    <div class="meme-type-icon">😄</div>
+                    <h3>Reaction Memes</h3>
+                    <p>Perfect responses to everyday situations that capture universal emotions and experiences.</p>
+                </div>
+                <div class="meme-type-card">
+                    <div class="meme-type-icon">🎬</div>
+                    <h3>Template Memes</h3>
+                    <p>Reusable formats that get adapted with new content while maintaining the original structure.</p>
+                </div>
+                <div class="meme-type-card">
+                    <div class="meme-type-icon">📱</div>
+                    <h3>Platform-Specific</h3>
+                    <p>Memes that are native to specific platforms like TikTok, Instagram, or Twitter.</p>
+                </div>
+                <div class="meme-type-card">
+                    <div class="meme-type-icon">🌍</div>
+                    <h3>Cultural Commentary</h3>
+                    <p>Memes that provide social commentary and critique on current events and cultural phenomena.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="meme-tools">
+            <h2>🛠️ Meme Creation Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h3>🎨 Image Memes</h3>
+                    <ul>
+                        <li><a href="https://imgflip.com" target="_blank">Imgflip</a> - Quick meme generator</li>
+                        <li><a href="https://www.canva.com" target="_blank">Canva</a> - Professional meme design</li>
+                        <li><a href="https://www.photopea.com" target="_blank">Photopea</a> - Free Photoshop alternative</li>
+                        <li><a href="https://www.gimp.org" target="_blank">GIMP</a> - Open-source image editor</li>
+                    </ul>
+                </div>
+                <div class="tool-category">
+                    <h3>🎬 Video Memes</h3>
+                    <ul>
+                        <li><a href="https://www.tiktok.com" target="_blank">TikTok</a> - Short-form video platform</li>
+                        <li><a href="https://www.capcut.com" target="_blank">CapCut</a> - Video editing app</li>
+                        <li><a href="https://www.veed.io" target="_blank">VEED</a> - Online video editor</li>
+                        <li><a href="https://www.davinciresolve.com" target="_blank">DaVinci Resolve</a> - Professional video editing</li>
+                    </ul>
+                </div>
+                <div class="tool-category">
+                    <h3>🤖 AI Meme Tools</h3>
+                    <ul>
+                        <li><a href="https://www.midjourney.com" target="_blank">Midjourney</a> - AI image generation</li>
+                        <li><a href="https://www.dalle-2.com" target="_blank">DALL-E 2</a> - AI art creation</li>
+                        <li><a href="https://www.runwayml.com" target="_blank">Runway ML</a> - AI video generation</li>
+                        <li><a href="https://www.craiyon.com" target="_blank">Craiyon</a> - Free AI image generator</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="meme-communities">
+            <h2>💬 Meme Communities</h2>
+            <div class="communities-grid">
+                <div class="community-item">
+                    <div class="community-icon">📱</div>
+                    <div class="community-info">
+                        <h3>r/memes</h3>
+                        <p>The largest meme community on Reddit with millions of members</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">🎭</div>
+                    <div class="community-info">
+                        <h3>r/dankmemes</h3>
+                        <p>High-quality, often edgy memes for the cultured internet user</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">🧠</div>
+                    <div class="community-info">
+                        <h3>r/wholesomememes</h3>
+                        <p>Positive, uplifting memes that spread joy and kindness</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">🎨</div>
+                    <div class="community-info">
+                        <h3>r/me_irl</h3>
+                        <p>Relatable memes about everyday life and personal experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="meme-trends">
+            <h2>🔥 Current Meme Trends</h2>
+            <div class="trends-list">
+                <div class="trend-item">
+                    <div class="trend-emoji">🤖</div>
+                    <div class="trend-info">
+                        <h3>AI-Generated Memes</h3>
+                        <p>Memes created entirely by artificial intelligence, exploring the intersection of technology and humor</p>
+                    </div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-emoji">🎵</div>
+                    <div class="trend-info">
+                        <h3>Audio Memes</h3>
+                        <p>Sound-based memes that rely on audio cues and music to convey humor and meaning</p>
+                    </div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-emoji">🌍</div>
+                    <div class="trend-info">
+                        <h3>Global Memes</h3>
+                        <p>Memes that transcend language barriers and cultural differences to create universal humor</p>
+                    </div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-emoji">⚡</div>
+                    <div class="trend-info">
+                        <h3>Micro-Memes</h3>
+                        <p>Ultra-short, rapid-fire memes that spread and die within hours or days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    .category-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    .category-intro {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 40px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .category-intro h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .category-intro p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .article-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .article-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, var(--border-color), var(--bg-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .placeholder-image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+    }
+
+    .placeholder-emoji {
+        font-size: 4rem;
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .article-content {
+        padding: 25px;
+    }
+
+    .article-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .article-category {
+        background: var(--accent-gold);
+        color: #000;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .article-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.3;
+    }
+
+    .article-excerpt {
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .read-more {
+        background: linear-gradient(45deg, var(--accent-gold), var(--accent-orange));
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .read-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .meme-categories, .meme-tools, .meme-communities, .meme-trends {
+        margin-bottom: 50px;
+    }
+
+    .meme-categories h2, .meme-tools h2, .meme-communities h2, .meme-trends h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 30px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .meme-types-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .meme-type-card {
+        background: var(--bg-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .meme-type-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .meme-type-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .meme-type-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 15px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .meme-type-card p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .tool-category {
+        background: var(--bg-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .tool-category h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .tool-category ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .tool-category li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .tool-category li:last-child {
+        border-bottom: none;
+    }
+
+    .tool-category a {
+        color: var(--accent-gold);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .tool-category a:hover {
+        color: var(--accent-orange);
+    }
+
+    .communities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .community-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 25px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .community-item:hover {
+        border-color: var(--accent-gold);
+        transform: translateX(5px);
+    }
+
+    .community-icon {
+        font-size: 2.5rem;
+        min-width: 50px;
+    }
+
+    .community-info h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .community-info p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .trends-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .trend-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 25px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .trend-item:hover {
+        border-color: var(--accent-gold);
+        transform: translateX(5px);
+    }
+
+    .trend-emoji {
+        font-size: 2.5rem;
+        min-width: 50px;
+    }
+
+    .trend-info h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .trend-info p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .articles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .meme-types-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .communities-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .category-intro h2 {
+            font-size: 2rem;
+        }
+
+        .category-intro p {
+            font-size: 1.1rem;
+        }
+    }
+</style>

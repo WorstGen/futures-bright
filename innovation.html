@@ -1,0 +1,446 @@
+---
+layout: default
+title: Innovation
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>🚀 Innovation</h1>
+        <p>Discover the latest breakthroughs in technology, AI, and digital transformation. Stay ahead of the curve with insights into what's shaping tomorrow.</p>
+    </div>
+</section>
+
+<main class="container">
+    <div class="category-content">
+        <div class="category-intro">
+            <h2>Innovation at the Speed of Thought</h2>
+            <p>We're living in an era of unprecedented innovation where breakthrough technologies are emerging faster than we can process them. From AI and blockchain to quantum computing and biotechnology, the future is being built today by visionaries who dare to think differently.</p>
+        </div>
+
+        <div class="articles-grid">
+            {% assign innovation_posts = site.posts | where: 'category', 'Innovation' %}
+            {% for post in innovation_posts %}
+            <article class="article-card">
+                <div class="article-image">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">
+                    {% else %}
+                        <div class="placeholder-image">
+                            <span class="placeholder-emoji">{{ post.emoji | default: '🚀' }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">{{ post.category }}</span>
+                        <span>{{ post.date | date: "%B %d, %Y" }}</span>
+                        <span>By {{ post.author }}</span>
+                    </div>
+                    <h3 class="article-title">{{ post.title }}</h3>
+                    <p class="article-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Explore More</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="innovation-trends">
+            <h2>🔥 Hot Innovation Trends</h2>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">🤖</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>From GPT-4 to autonomous systems, AI is reshaping every industry and creating new possibilities for human-machine collaboration.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">⛓️</div>
+                    <h3>Blockchain & Web3</h3>
+                    <p>Decentralized technologies are creating new economic models and reimagining how we interact with digital systems.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🧬</div>
+                    <h3>Biotechnology</h3>
+                    <p>Gene editing, synthetic biology, and personalized medicine are revolutionizing healthcare and life sciences.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🌐</div>
+                    <h3>Quantum Computing</h3>
+                    <p>Quantum computers promise to solve problems that are impossible for classical computers, opening new frontiers in science and cryptography.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-resources">
+            <h2>🛠️ Innovation Tools & Platforms</h2>
+            <div class="resources-grid">
+                <div class="resource-category">
+                    <h3>🔬 Research & Development</h3>
+                    <ul>
+                        <li><a href="https://arxiv.org" target="_blank">arXiv</a> - Preprint research papers</li>
+                        <li><a href="https://www.nature.com" target="_blank">Nature</a> - Scientific publications</li>
+                        <li><a href="https://www.technologyreview.com" target="_blank">MIT Technology Review</a> - Tech insights</li>
+                        <li><a href="https://www.wired.com" target="_blank">Wired</a> - Technology news</li>
+                    </ul>
+                </div>
+                <div class="resource-category">
+                    <h3>💻 Development Tools</h3>
+                    <ul>
+                        <li><a href="https://github.com" target="_blank">GitHub</a> - Code collaboration</li>
+                        <li><a href="https://openai.com" target="_blank">OpenAI API</a> - AI development</li>
+                        <li><a href="https://www.tensorflow.org" target="_blank">TensorFlow</a> - Machine learning</li>
+                        <li><a href="https://pytorch.org" target="_blank">PyTorch</a> - Deep learning framework</li>
+                    </ul>
+                </div>
+                <div class="resource-category">
+                    <h3>🚀 Startup Resources</h3>
+                    <ul>
+                        <li><a href="https://www.ycombinator.com" target="_blank">Y Combinator</a> - Startup accelerator</li>
+                        <li><a href="https://www.producthunt.com" target="_blank">Product Hunt</a> - Product discovery</li>
+                        <li><a href="https://www.techcrunch.com" target="_blank">TechCrunch</a> - Startup news</li>
+                        <li><a href="https://www.crunchbase.com" target="_blank">Crunchbase</a> - Company database</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-communities">
+            <h2>💬 Innovation Communities</h2>
+            <div class="communities-grid">
+                <div class="community-item">
+                    <div class="community-icon">🧠</div>
+                    <div class="community-info">
+                        <h3>AI Research Community</h3>
+                        <p>Cutting-edge AI research discussions and collaboration</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">⚡</div>
+                    <div class="community-info">
+                        <h3>Startup Founders</h3>
+                        <p>Entrepreneurs building the next generation of companies</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">🔬</div>
+                    <div class="community-info">
+                        <h3>Tech Innovators</h3>
+                        <p>Engineers and researchers pushing technological boundaries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    .category-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    .category-intro {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 40px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .category-intro h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .category-intro p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .article-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .article-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, var(--border-color), var(--bg-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .placeholder-image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+    }
+
+    .placeholder-emoji {
+        font-size: 4rem;
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .article-content {
+        padding: 25px;
+    }
+
+    .article-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .article-category {
+        background: var(--accent-gold);
+        color: #000;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .article-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.3;
+    }
+
+    .article-excerpt {
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .read-more {
+        background: linear-gradient(45deg, var(--accent-gold), var(--accent-orange));
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .read-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .innovation-trends {
+        margin-bottom: 50px;
+    }
+
+    .innovation-trends h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 30px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .trends-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .trend-card {
+        background: var(--bg-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .trend-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .trend-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .trend-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 15px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .trend-card p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .category-resources, .category-communities {
+        margin-bottom: 50px;
+    }
+
+    .category-resources h2, .category-communities h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 30px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .resource-category {
+        background: var(--bg-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .resource-category h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .resource-category ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .resource-category li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .resource-category li:last-child {
+        border-bottom: none;
+    }
+
+    .resource-category a {
+        color: var(--accent-gold);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .resource-category a:hover {
+        color: var(--accent-orange);
+    }
+
+    .communities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .community-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 25px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .community-item:hover {
+        border-color: var(--accent-gold);
+        transform: translateX(5px);
+    }
+
+    .community-icon {
+        font-size: 2.5rem;
+        min-width: 50px;
+    }
+
+    .community-info h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .community-info p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .articles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .trends-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .resources-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .communities-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .category-intro h2 {
+            font-size: 2rem;
+        }
+
+        .category-intro p {
+            font-size: 1.1rem;
+        }
+    }
+</style>

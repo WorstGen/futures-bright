@@ -1,0 +1,363 @@
+---
+layout: default
+title: Creativity
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>🎨 Creativity</h1>
+        <p>Explore the latest in creative tools, techniques, and inspiration. From AI art to traditional crafts, discover what's shaping the future of creative expression.</p>
+    </div>
+</section>
+
+<main class="container">
+    <div class="category-content">
+        <div class="category-intro">
+            <h2>Creative Renaissance</h2>
+            <p>We're living through a creative renaissance where the barriers between having an idea and bringing it to life are lower than ever. AI tools, new platforms, and collaborative communities are democratizing creativity and opening up possibilities we never imagined.</p>
+        </div>
+
+        <div class="articles-grid">
+            {% assign creativity_posts = site.posts | where: 'category', 'Creativity' %}
+            {% for post in creativity_posts %}
+            <article class="article-card">
+                <div class="article-image">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">
+                    {% else %}
+                        <div class="placeholder-image">
+                            <span class="placeholder-emoji">{{ post.emoji | default: '🎨' }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category">{{ post.category }}</span>
+                        <span>{{ post.date | date: "%B %d, %Y" }}</span>
+                        <span>By {{ post.author }}</span>
+                    </div>
+                    <h3 class="article-title">{{ post.title }}</h3>
+                    <p class="article-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Explore More</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="category-resources">
+            <h2>🛠️ Creative Tools & Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-category">
+                    <h3>🎨 Visual Art</h3>
+                    <ul>
+                        <li><a href="https://midjourney.com" target="_blank">Midjourney</a> - AI image generation</li>
+                        <li><a href="https://runwayml.com" target="_blank">Runway ML</a> - AI video editing</li>
+                        <li><a href="https://www.figma.com" target="_blank">Figma</a> - Collaborative design</li>
+                        <li><a href="https://www.blender.org" target="_blank">Blender</a> - 3D creation suite</li>
+                    </ul>
+                </div>
+                <div class="resource-category">
+                    <h3>🎵 Audio & Music</h3>
+                    <ul>
+                        <li><a href="https://aiva.ai" target="_blank">AIVA</a> - AI music composition</li>
+                        <li><a href="https://www.ableton.com" target="_blank">Ableton Live</a> - Music production</li>
+                        <li><a href="https://splice.com" target="_blank">Splice</a> - Sample library</li>
+                        <li><a href="https://www.landr.com" target="_blank">LANDR</a> - AI mastering</li>
+                    </ul>
+                </div>
+                <div class="resource-category">
+                    <h3>✍️ Writing & Content</h3>
+                    <ul>
+                        <li><a href="https://openai.com" target="_blank">GPT-4</a> - AI writing assistant</li>
+                        <li><a href="https://www.notion.so" target="_blank">Notion</a> - Knowledge management</li>
+                        <li><a href="https://obsidian.md" target="_blank">Obsidian</a> - Creative note-taking</li>
+                        <li><a href="https://www.grammarly.com" target="_blank">Grammarly</a> - Writing enhancement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-communities">
+            <h2>💬 Creative Communities</h2>
+            <div class="communities-grid">
+                <div class="community-item">
+                    <div class="community-icon">🎮</div>
+                    <div class="community-info">
+                        <h3>Creative Coding Discord</h3>
+                        <p>Cross-platform creative coding discussions and project sharing</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">🎭</div>
+                    <div class="community-info">
+                        <h3>Motion Graphics Discord</h3>
+                        <p>Animation and motion design community</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <div class="community-icon">🎨</div>
+                    <div class="community-info">
+                        <h3>AI Art Collective</h3>
+                        <p>Ethical discussions and creative AI applications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    .category-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    .category-intro {
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 40px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .category-intro h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .category-intro p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .article-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .article-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, var(--border-color), var(--bg-secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .placeholder-image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+    }
+
+    .placeholder-emoji {
+        font-size: 4rem;
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .article-content {
+        padding: 25px;
+    }
+
+    .article-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .article-category {
+        background: var(--accent-gold);
+        color: #000;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .article-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.3;
+    }
+
+    .article-excerpt {
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .read-more {
+        background: linear-gradient(45deg, var(--accent-gold), var(--accent-orange));
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .read-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .category-resources, .category-communities {
+        margin-bottom: 50px;
+    }
+
+    .category-resources h2, .category-communities h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        margin-bottom: 30px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .resource-category {
+        background: var(--bg-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .resource-category h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .resource-category ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .resource-category li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .resource-category li:last-child {
+        border-bottom: none;
+    }
+
+    .resource-category a {
+        color: var(--accent-gold);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .resource-category a:hover {
+        color: var(--accent-orange);
+    }
+
+    .communities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .community-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 25px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .community-item:hover {
+        border-color: var(--accent-gold);
+        transform: translateX(5px);
+    }
+
+    .community-icon {
+        font-size: 2.5rem;
+        min-width: 50px;
+    }
+
+    .community-info h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .community-info p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .articles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .resources-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .communities-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .category-intro h2 {
+            font-size: 2rem;
+        }
+
+        .category-intro p {
+            font-size: 1.1rem;
+        }
+    }
+</style>
