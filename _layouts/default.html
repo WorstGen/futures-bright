@@ -81,6 +81,19 @@
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
         }
 
+        /* Light mode logo adjustments */
+        [data-theme="light"] .logo-image {
+            filter: invert(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.1));
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        [data-theme="light"] .logo-image:hover {
+            filter: invert(1) drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+        }
+
         .nav {
             display: flex;
             gap: 30px;
